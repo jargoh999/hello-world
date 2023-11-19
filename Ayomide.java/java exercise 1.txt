@@ -1,0 +1,47 @@
+// 2.7...
+
+// (A) comments
+
+// (b) conditional statement
+
+// (C) remainder % and division /
+
+// (D) first set
+
+// (E) variables
+
+2.8 // System.out.print("enter an integer :");
+
+// int a = c * b;
+
+// this program calculate a payroll
+
+2.9 // true, because it is enclosed in a parenthesis
+
+// true 
+
+// false 
+
+// false , variable name cannot begin with a digit 
+
+2.10 //x = 10
+
+// value of x * y = 5 
+
+// x is 5 and y is 1 
+
+// 5 + 1 is not equal to 5*1 
+
+2.11// all of the statements 
+
+2.12 // (a)
+
+2.13 // 13 
+
+// 14 
+
+2.14 //  
+  
+
+ 
+
