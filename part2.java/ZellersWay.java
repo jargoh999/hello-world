@@ -14,12 +14,12 @@ System.out.println("enter month 1 - 12 :");
 int monthNo = input.nextInt();
 
 
-int Century = year / 100;
+int century = year / 100;
 
-yearOfCen = year % 100;
+int yearOfCen = year % 100;
 
 
-DaysOfWeek = (DOM + 26 * (monthNo + 1) / 10 + year + year/4 + century/4 + 5 * century) % 7 
+int DaysOfWeek = (DOM + 26 * (monthNo + 1) / 10 + year + year/4 + yearOfCen/4 + 5 * century) % 7 ;
 
 
 
@@ -33,7 +33,7 @@ System.out.print("Days Of the  Week is tuesday");
 if(DaysOfWeek == 3)
 System.out.print("Days Of the Week is wednesday");
 
-i(DaysOfWeek == 4)
+if (DaysOfWeek == 4)
 System.out.print("Days Of the Week is thursday");
 
 if(DaysOfWeek == 5)
