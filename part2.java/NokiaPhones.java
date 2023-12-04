@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class  NokiaPhones {
@@ -6,8 +7,8 @@ public static void main ( String [] args){
 
 Scanner input = new Scanner(System.in);
 do{
- 
-System.out.printf ("%15s%n%s%n","LIST OF MENU FUNCTION, enter ctrl +  Z to quit ");
+
+System.out.printf ("%15s%n%s%n","LIST OF MENU FUNCTION"," enter ctrl +  Z to quit ");
 
 System.out.print("1-> Phone Book \n" + "2-> Message \n" + "3-> chat \n" + "4-> Call register \n" + "5-> Tone \n" + "6-> Setting \n"+ "7-> Call Divert \n" + "8-> Games \n" + "9-> Calculator \n"+ "10-> Reminders \n" + "11-> Clock \n" + "12-> Profile \n" + "13 -> Sim Services \n" + "Select options : ");
 
@@ -19,8 +20,8 @@ System.out.print("\n\n");
     case 1: System.out.print("PHONE BOOK \n" + "1-> search \n" + "2 -> Service Nos \n" + "3 -> Add Name \n"+ "4 -> Erase\n" + "5 -> Edit \n" + "6 -> Assign tone \n"+ "7 -> Send b'card \n" + "8 -> options \n 1. Type of view \n 2. Memory status \n" + "9 -> Speed dials \n" + "10 -> Voice tags \n" + "select options ");
 
 int phoneBook = input.nextInt();
-            
-             
+
+
      		switch(phoneBook){
                    case 1: System.out.println("welcome to search"); break;         
 	     	   case 2: System.out.println("Welcome to service Nos"); break;
@@ -37,13 +38,13 @@ int phoneBook = input.nextInt();
 				  case 2: System.out.println("Welcome to Memory satus"); break;
 				  default: System.out.println("Wrong command entered "); break;
 				  }
-                 
+
                  break;
 		 case 9: System.out.print("Welcome to Speed dials"); break;
 		 case 10: System.out.print("Welcome to Voice tags"); break;
 		 default:  System.out.print("wrong command entered"); break; }
 
-                
+
              case 2: System.out.printf("%S%n%n %s%n %s%n %s%n %s%n %s%n %S%n%n %S%n %s%n %s%n %s%n %S%n%n %s%n %s%n %s%n %s%n %s%n b %s%n %s%n %s%n%n", "messages","->write messages","->inbox","->outbox","->picture messages","->Templates","->Smileys","->Messages settings"," 1.set ","1.messages centre number","    2.messages sent as","    3.messages validity"," 2.Common","    1.delivery reports","    2.reply via same centre","    3.character support","->info services","->voice mailbox number","-> service command editor"," select an action! " );
                            int action = input.nextInt();              
                          switch (action){ 
@@ -55,14 +56,14 @@ int phoneBook = input.nextInt();
                              case 6:   System.out.println("Smileys"); break;
                              case 7:   System.out.printf("%S%n%s%n%s%n%s%n%s%n%s%n%s%n%s%n", "messages settings"," ->set1 "," 1.message centre number","2.messages sent as ","3.messages validity"," ->common"," 1.delivery reports"," 3.character support"  );
                                             int Msettings = input.nextInt();                                           
-                                              
+
                                             switch (Msettings){
                                              case 1:  System.out.println("set 1"); break;
                                              case 2:   System.out.println("Common"); break;
                                              default: System.out.println("Wrong command entered "); break;}
 					     System.out.println("choose an option from above");
  					         int SetOpp = input.nextInt();
-						
+
                                                 switch (SetOpp/1){
 						 case 1: System.out.println("messages centre number");
 						        System.out.println("messages sent as");
@@ -72,14 +73,14 @@ int phoneBook = input.nextInt();
 						         System.out.println("character support");break;
 					         default: System.out.println("Wrong command entered ");break; }
                                                               break; 
-                                                                               
+
                              case 8:       System.out.println("info services"); break;
                              case 9:       System.out.println("voice mail number"); break;
                              case 10:      System.out.println("service command editor"); break;    
                                                                                                }break;     
 
                               case 3:      System.out.println("welcome to chat"); break;   
-                                                                 
+
                               case 4:  System.out.printf("%s%n %s%n %s%n %s%n %s%n %s%n  %s%n %s%n %s%n %s%n %s%n %s%n %s%n %s%n  ","call Register","1.Missed call"," 2.Recieved call","3.Dailed numbers","4.Erase recent call lists","5.clear timers","6.show call costs","1.last call cost","  2.All calls' cost","3.clear counter","7.call cost settings","1.call cost limit","2.Show costs in","8.prepaid credit");                                      
                                     System.out.println("select an option");      
                                     int fourPtion = input.nextInt();
@@ -109,7 +110,7 @@ int phoneBook = input.nextInt();
 							     case 3:  System.out.println("clear all counters"); break;
                                                              default: System.out.println("Wrong command entered ");break;   
                                                                                                    } break;
-                                                         
+
                                    case 7:        System.out.printf("%S%n %s%n %s%n","call cost settings", "1.calls' costs limit", "2.show costs in" );
 							   System.out.println("select an option here");
                                                                 int sevenOpt = input.nextInt();
@@ -118,9 +119,9 @@ int phoneBook = input.nextInt();
 								case 2 : System.out.println("show your costs in");break; 
 				                                 default: System.out.println("Wrong command entered ");break;  }
 									             break; 
-                                  
+
                                    case 8:          System.out.println("PREPAID CREDIT"); break; 
-                                                                                               
+
                                                            } break;
 
 
@@ -128,7 +129,7 @@ int phoneBook = input.nextInt();
 
 
                                   case 5:          System.out.printf("%S%n%n %s%n %s%n %s%n %s%n %s%n %s%n %s%n %s%n %s%n","-->tones", "1.ringing tone","2.ringing volume","3.incoming call alert","4.composer","5.Message alert tone","6.keypad tones","7.warning and games tones","8.vibrating alert","9.screen saver");
-						             
+
 											 System.out.println("select an option here");
 											   int fifthOpt = input.nextInt();
 											   switch (fifthOpt){ 
@@ -145,7 +146,7 @@ int phoneBook = input.nextInt();
                                              								    }  break;
 
                                     case 6:           System.out.printf("%S%n%n %s%n %s%n %s%n %s%n","-->Settings", "1.call settings","2.phone settings","3.Security settings","4.restore  ");
-						               
+
 										 	 System.out.println("select an option here");
 											   int sixthOpt = input.nextInt();
 											   switch(sixthOpt/1){ 
@@ -161,7 +162,7 @@ int phoneBook = input.nextInt();
 										           case 6 : System.out.println("Automatic answer ");break;        
 											   default: System.out.println("Wrong command entered ");break;}
 													 break;					
-                                                                                    						
+
 											   case 2:   System.out.printf("%S%n%n %s%n %s%n %s%n %s%n %s%n %s%n","-->phone Settings", "1.language","2.cell info display","3.welcome note","4.network selection","5.Lights ","6.Confirm SIM service actions");
 											               System.out.println("select an option here");
 											   int Case2Of4 = input.nextInt();
@@ -174,7 +175,7 @@ int phoneBook = input.nextInt();
 										           case 6 : System.out.println("Confirm SIM service actions ");break;        
 											   default: System.out.println("Wrong command entered ");break;}
 													 break;					
-                                                                                    		
+
                                                                                            case 3:   System.out.printf("%S%n%n %s%n %s%n %s%n %s%n %s%n %s%n","-->security Settings", "1.PIN code request","2.Call barring service","3.Fixed dialling","4.closed user group","5.phone security ","6.change access codes");;
 											               System.out.println("select an option here");
 											   int Case3Of4 = input.nextInt();
@@ -187,8 +188,8 @@ int phoneBook = input.nextInt();
 										           case 6 : System.out.println("change access codes");break;        
 											   default: System.out.println("Wrong command entered ");break;}
 													 break;					
-                                                                                    		
-											   
+
+
 
 											    case 4:   System.out.println("Restore factory settings !!! ");break;
 																	 } break;
@@ -198,14 +199,14 @@ int phoneBook = input.nextInt();
 
 
 					case 7 :           System.out.println(" call divert "); break; 
-					
+
 					case 8 :           System.out.println(" GAME "); break;
-                                     
+
 					case 9 :           System.out.println("CALCULATOR"); break;  
 
                                         case 10:           System.out.println(" REMINDERS "); break; 
-                   
-                                             						 
+
+
                                         case 11 :          System.out.printf("%S%n%n %s%n %s%n %s%n %s%n %s%n %s%n","-->CLOCK ", "1.Alarm clock","2.Clock settings","3.Date Settings","4.Stopwatch","5.Countdown timer ","6.Auto update date and time");
 											               System.out.println("select an option here");
                                                                                                 int C11 = input.nextInt();
@@ -218,7 +219,7 @@ int phoneBook = input.nextInt();
 										           case 6 : System.out.println("Auto update date and time");break;        
 											   default: System.out.println("Wrong command entered ");break;}
 													 break;					
-                                                                                    		
+
 
 
 				       case 12 :             System.out.println(" Profiles "); break;
@@ -227,10 +228,10 @@ int phoneBook = input.nextInt();
 
                                       default: System.out.println("Wrong command entered ");break;}
 							        					   }
-                                  
+
                                        while ( input. hasNext());
-                                   
-                                                          
+
+
 
 
 
@@ -268,10 +269,8 @@ int phoneBook = input.nextInt();
 } 
 
 }
- 
 
 
- 
 
 
 
