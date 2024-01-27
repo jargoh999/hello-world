@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class MassiveArray {
 
@@ -9,43 +10,55 @@ public class MassiveArray {
     public void CollectGrade() {
 
         System.out.println("How many students do you have?");
-        int theLength = input.nextInt();
+        int StudentNumber = input.nextInt();
 
         System.out.println("How many subject do they offer? ");
-        int LengthB = input.nextInt();
+        int SubjectNumber = input.nextInt();
         System.out.println("saving >>>>>>>>>>>>>>>>>>>>>>>>>>>");
         System.out.println("Saved successfully\n\n");
 
-        grades = new int[theLength][LengthB];
+        grades = new int[StudentNumber][SubjectNumber];
 
         for (int student = 0; student < grades.length; student++) {
             for (int subject = 0; subject < grades[student].length; subject++) {
 
                 System.out.printf("Entering score for student %d %n", student + 1);
                 System.out.printf("Entering score for subject %d%n", subject + 1);
-                int theRealGrade = input.nextInt();
-                if (theRealGrade >= 0 && theRealGrade <= 100)
-                    grades[student][subject] = theRealGrade;
-                else {
-                    System.out.println("oloshi try again , unto the next sha ");
-                    continue;
-                }
+
+
+                    int theRealGrade = input.nextInt();
+
+                    if (theRealGrade >= 0 && theRealGrade <= 100)
+                        grades[student][subject] = theRealGrade;
+
+
+
+                
+    while (!(theRealGrade >= 0 && theRealGrade <= 100)) {
+        System.out.println(" try again , enter a grade between 0 - 100  ");
+        System.out.printf("Entering score for student %d %n", student + 1);
+        System.out.printf("Entering score for subject %d%n", subject + 1);
+        theRealGrade = input.nextInt();
+
+
+}
+
                 System.out.println("saving >>>>>>>>>>>>>>>>>>>>>>>>>>>");
                 System.out.println("Saved successfully\n\n");
             }
         }
     }
 
-    int getTotal(int[] grades) {
-        int tot = 0;
+    public int getTotal(int[] grades) {
+        int total = 0;
 
         for (int i = 0; i < grades.length; i++) {
 
-            tot += grades[i];
+            total += grades[i];
 
         }
 
-        return tot;
+        return total;
 
     }
 
@@ -253,7 +266,7 @@ public class MassiveArray {
         int bestGrad = total[0];
         int worstGrad = total[0];
         for (int checkT = 0; checkT < total.length; checkT++) {
-             totalOverAll += total[checkT];
+            totalOverAll += total[checkT];
             if (total[checkT] > bestGrad) {
                 bestGrad = total[checkT];
             }
@@ -264,31 +277,31 @@ public class MassiveArray {
             }
         }
 
-        for(int checkT = 0; checkT < total.length ; checkT ++){
-            if (total[checkT] < worstGrad){
+        for (int checkT = 0; checkT < total.length; checkT++) {
+            if (total[checkT] < worstGrad) {
                 worstGrad = total[checkT];
             }
         }
-        for(int checkT = 0; checkT < total.length ; checkT ++){
-            if (total[checkT] == worstGrad){
+        for (int checkT = 0; checkT < total.length; checkT++) {
+            if (total[checkT] == worstGrad) {
                 worstGradNo = checkT;
             }
         }
-        double classAverage = (double)totalOverAll/total.length;
+        double classAverage = (double) totalOverAll / total.length;
 
 
         System.out.println("CLASS SUMMARY");
         System.out.println("======================================================================");
-        System.out.printf("Best Graduating  student is : student  %d  scoring  %d%n",bestGradNo + 1 ,bestGrad);
+        System.out.printf("Best Graduating  student is : student  %d  scoring  %d%n", bestGradNo + 1, bestGrad);
         System.out.println("======================================================================");
 
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        System.out.printf("Worst Graduating  student is : student  %d  scoring  %d%n",worstGradNo + 1,worstGrad);
+        System.out.printf("Worst Graduating  student is : student  %d  scoring  %d%n", worstGradNo + 1, worstGrad);
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
         System.out.println("======================================================================");
-        System.out.printf("Class total  is :   %d%n",totalOverAll);
-        System.out.printf("Class Average  is :   %.2f%n",classAverage);
+        System.out.printf("Class total  is :   %d%n", totalOverAll);
+        System.out.printf("Class Average  is :   %.2f%n", classAverage);
         System.out.println("======================================================================");
     }
 
