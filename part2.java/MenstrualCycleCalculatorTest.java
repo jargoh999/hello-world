@@ -32,24 +32,25 @@ public class MenstrualCycleCalculatorTest {
     }
 
     @Test
-    public void ovulationMinimumRangeIsAccurate() {
+    public void testThatOvulationMinimumRangeIsAccurate() {
 
         MenstrualCycleCalculator menstrualCalculator = new MenstrualCycleCalculator();
-        String [] dates = {"2002","02","14"};
-        String verifier = menstrualCalculator.ovulationMinimumRange(dates);
-        String Expected = "2002 - 2 - 23";
+        String[] date = {"2002", "02", "14"};
+        String verifier = menstrualCalculator.ovulationMinimumRange(date);
+        String Expected = "2002 - FEBRUARY - 23";
         assertEquals(Expected, verifier);
     }
 
     @Test
-    public void ovulationMaximumRangeIsAccurate() {
+    public void testThatOvulationMaximumRangeIsAccurate() {
 
         MenstrualCycleCalculator menstrualCalculator = new MenstrualCycleCalculator();
-        String [] dates = {"2002","02","14"};
-        String verifier = menstrualCalculator.ovulationMaximumRange(dates);
-        String Expected = "2002 - 2 - 28";
+        String[] date = {"2002", "02", "14"};
+        String verifier = menstrualCalculator.ovulationMaximumRange(date);
+        String Expected = "2002 - FEBRUARY - 28";
         assertEquals(Expected, verifier);
     }
 
 
-}
+    }
+
