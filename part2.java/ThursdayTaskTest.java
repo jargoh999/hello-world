@@ -11,7 +11,7 @@ public class ThursdayTaskTest {
         ThursdayTask task = new ThursdayTask();
         int [] sample = {1,2,3};
         int [] expected = {1,2,3,2,4,6};
-        int [] result = task.doubleLengthAndElement(sample);
+        int [] result = ThursdayTask.doubleLengthAndElement(sample);
         assertArrayEquals(expected,result);
     }
 
