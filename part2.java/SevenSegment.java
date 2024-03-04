@@ -1,0 +1,4 @@
+public class SevenSegment {
+    Str
+
+}
