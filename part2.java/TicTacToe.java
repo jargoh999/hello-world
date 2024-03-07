@@ -24,8 +24,8 @@ public class TicTacToe {
         return checkRow(Integer.parseInt(String.valueOf(validateRowAndColumn(cell).charAt(0))))||checkCol(Integer.parseInt(String.valueOf(validateRowAndColumn(cell).charAt(1))))||checkDiagonal()||checkAntiDiagonal();
     }
 
-    public boolean hasNoWinner(int cell){
-        return!(checkRow(Integer.parseInt(String.valueOf(validateRowAndColumn(cell).charAt(0))))||checkCol(Integer.parseInt(String.valueOf(validateRowAndColumn(cell).charAt(1))))||checkDiagonal()||checkAntiDiagonal());
+    public boolean gameIsADraw(){
+       return valueInCells[0][0]!=value_in_cell.EMPTY && valueInCells[0][1] != value_in_cell.EMPTY && valueInCells[0][2] != value_in_cell.EMPTY && valueInCells[1][0] != value_in_cell.EMPTY && valueInCells[1][1] != value_in_cell.EMPTY && valueInCells[1][2] != value_in_cell.EMPTY && valueInCells[2][0] != value_in_cell.EMPTY && valueInCells[2][1] != value_in_cell.EMPTY && valueInCells[2][2] != value_in_cell.EMPTY;
     }
 
     private String validateRowAndColumn(int cell){
@@ -48,6 +48,7 @@ public class TicTacToe {
     }
 
     private boolean checkCol(int column) {
+
         return valueInCells[0][column] == valueInCells[1][column] && valueInCells[1][column] == valueInCells[2][column] && valueInCells[0][column] != value_in_cell.EMPTY;
     }
     private  boolean checkDiagonal() {
@@ -56,8 +57,9 @@ public class TicTacToe {
     private  boolean checkAntiDiagonal() {
         return valueInCells[0][2] == valueInCells[1][1] && valueInCells[1][1] == valueInCells[2][0] && valueInCells[0][2] != value_in_cell.EMPTY;
     }
+
     public  value_in_cell[][] getValueInCells() {
-        return valueInCells;
+        return valueInCells; 
     }
 
 

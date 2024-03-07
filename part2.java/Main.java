@@ -1,44 +1,43 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import javax.annotation.processing.SupportedAnnotationTypes;
+import java.util.*;
 
 public class Main {
     public static void mainApp() {
         TicTacToe ticTacToe = new TicTacToe();
         Scanner scanner = new Scanner(System.in);
-        boolean stop1 = false;
-        boolean stop2 = false;
+        boolean player1Wins = false;
+        boolean player2Wins = false;
         System.out.println("let the game Begin !!!");
-        try{
-        for (int move = 1; move < 5 ; move++) {
+       try {
             Player player1 = new Player(1);
             Player player2 = new Player(2);
-            System.out.println("player 1 turn");
-            int tileToPlay = scanner.nextInt();
-            player1.play(ticTacToe, tileToPlay);
-            stop1 = ticTacToe.hasAWinner(tileToPlay);
-            if (stop1) break;
-            ticTacToe.displayTile();
-            System.out.println("player 2 turn");
-            int tileToPlay2 = scanner.nextInt();
-            player2.play(ticTacToe, tileToPlay2);
-            stop2 = ticTacToe.hasAWinner(tileToPlay2);
-            if (stop2) break;
-            ticTacToe.displayTile();
-        }
 
-        }catch (IllegalArgumentException| InputMismatchException|TileNotEmptyException exception){
-            System.out.println("respect your self you raised "+ exception +" ");
+       while (true) {
+           System.out.println("player 1 turn");
+           int tileToPlay = scanner.nextInt();
+           player1.play(ticTacToe, tileToPlay);
+           player1Wins = ticTacToe.hasAWinner(tileToPlay);
+           if(player1Wins)break;
+           if(ticTacToe.gameIsADraw())break;
+           ticTacToe.displayTile();
+           System.out.println("player 2 turn");
+           int tileToPlay2 = scanner.nextInt();
+           player2.play(ticTacToe, tileToPlay2);
+           player2Wins = ticTacToe.hasAWinner(tileToPlay2);
+           if(player2Wins)break;
+           ticTacToe.displayTile();
+        }
+        }catch (IllegalArgumentException| InputMismatchException|TileNotEmptyException exception){System.out.println("respect your self you raised "+ exception +" ");
             mainApp();
         }
-        if (stop1)System.out.println("player 1 wins !!!");
-        if(stop2) System.out.println("player 2 wins !!!");
-        else System.out.println("it's a draw");
-
-
-
+        if (player1Wins)System.out.println("player 1 wins !!!");
+        if(player2Wins) System.out.println("player 2 wins !!!");
+        if(ticTacToe.gameIsADraw()) System.out.println("it's a draw");
     }
+    public static void main (String[]args){
+                mainApp();
+            }
+        }
 
-    public static void main(String[] args) {
-        mainApp();
-    }
-}
+
+

@@ -268,22 +268,33 @@ class TicTacToeTest {
 
     }
 
-//    @Test
-//    public void testThatPlayerCanDrawOnARow() {
-//
-//        TicTacToe ticTacToe = new TicTacToe();
-//        Player player1 = new Player(1);
-//        Player player2 = new Player(2);
-//        assertEquals(value_in_cell.X, player1.getPlayerSignature());
-//        assertEquals(value_in_cell.X, player2.getPlayerSignature());
-//        player1.play(ticTacToe, 1);
-//        assertFalse(ticTacToe.hasAWinner(1));
-//        player1.play(ticTacToe, 4);
-//        assertFalse(ticTacToe.hasAWinner(4));
-//        player1.play(ticTacToe, 7);
-//        assertTrue(ticTacToe.hasAWinner(7));
+    @Test
+    public void testThatPlayerCanDrawOnARow() {
+        TicTacToe ticTacToe = new TicTacToe();
+        Player player1 = new Player(1);
+        Player player2 = new Player(2);
+        assertEquals(value_in_cell.X, player1.getPlayerSignature());
+        assertEquals(value_in_cell.O, player2.getPlayerSignature());
+        player1.play(ticTacToe, 1);
+        assertFalse(ticTacToe.hasAWinner(1));
+        player2.play(ticTacToe,2);
+        assertFalse(ticTacToe.hasAWinner(2));
+        player1.play(ticTacToe, 3);
+        assertFalse(ticTacToe.hasAWinner(3));
+        player2.play(ticTacToe,4);
+        assertFalse(ticTacToe.hasAWinner(4));
+        ticTacToe.displayTile();
+        player1.play(ticTacToe,5);
+        assertTrue(ticTacToe.hasAWinner(5));
+        player2.play(ticTacToe,8);
+        assertFalse(ticTacToe.hasAWinner(8));
+        player1.play(ticTacToe,7);
+        assertFalse(ticTacToe.hasAWinner(7));
+        ticTacToe.displayTile();
+//        player2.play(ticTacToe,8);
+//        assertFalse(ticTacToe.hasAWinner(8));
 //        ticTacToe.displayTile();
-//
-//    }
+
+    }
 
 }
