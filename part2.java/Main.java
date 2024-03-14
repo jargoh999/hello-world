@@ -1,43 +1,17 @@
-import javax.annotation.processing.SupportedAnnotationTypes;
-import java.util.*;
-
+// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
+// then press Enter. You can now see whitespace characters in your code.
 public class Main {
-    public static void mainApp() {
-        TicTacToe ticTacToe = new TicTacToe();
-        Scanner scanner = new Scanner(System.in);
-        boolean player1Wins = false;
-        boolean player2Wins = false;
-        System.out.println("let the game Begin !!!");
-       try {
-            Player player1 = new Player(1);
-            Player player2 = new Player(2);
+    public static void main(String[] args) {
+        // Press Alt+Enter with your caret at the highlighted text to see how
+        // IntelliJ IDEA suggests fixing it.
+        System.out.printf("Hello and welcome!");
 
-       while (true) {
-           System.out.println("player 1 turn");
-           int tileToPlay = scanner.nextInt();
-           player1.play(ticTacToe, tileToPlay);
-           player1Wins = ticTacToe.hasAWinner(tileToPlay);
-           if(player1Wins)break;
-           if(ticTacToe.gameIsADraw())break;
-           ticTacToe.displayTile();
-           System.out.println("player 2 turn");
-           int tileToPlay2 = scanner.nextInt();
-           player2.play(ticTacToe, tileToPlay2);
-           player2Wins = ticTacToe.hasAWinner(tileToPlay2);
-           if(player2Wins)break;
-           ticTacToe.displayTile();
+        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
+        for (int i = 1; i <= 5; i++) {
+
+            // Press Shift+F9 to start debugging your code. We have set one breakpoint
+            // for you, but you can always add more by pressing Ctrl+F8.
+            System.out.println("i = " + i);
         }
-        }catch (IllegalArgumentException| InputMismatchException|TileNotEmptyException exception){System.out.println("respect your self you raised "+ exception +" ");
-            mainApp();
-        }
-        if (player1Wins)System.out.println("player 1 wins !!!");
-        if(player2Wins) System.out.println("player 2 wins !!!");
-        if(ticTacToe.gameIsADraw()) System.out.println("it's a draw");
     }
-    public static void main (String[]args){
-                mainApp();
-            }
-        }
-
-
-
+}
