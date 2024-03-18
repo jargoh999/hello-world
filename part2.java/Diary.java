@@ -1,87 +1,80 @@
+package data.model;
+
+import services.Exceptions.EntryNotFoundException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Diary {
-    private int entryId = 1;
-    private boolean isLocked ;
-    private String password;
+    private int id;
     private String userName;
+    private String password;
 
-    public List<Entry> entries = new ArrayList<>();
+    private  boolean isLocked = false;
 
-    public Diary(String userName, String password){
-           this.password = password;
-           this.userName = userName;
+    private List<Entry> entryList = new ArrayList<>();
+
+    public Diary (){}
+    public int getId() {
+        return id;
     }
-    public Diary(){
-        this(null,null);
+
+    public void setId(int id) {
+        this.id = id;
     }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Entry> getEntryList() {
+        return entryList;
+    }
+
+    public void setEntryList(List<Entry> entryList) {
+        this.entryList = entryList;
+    }
+
     public boolean isLocked() {
         return isLocked;
     }
 
-    public void lockDiary() {
-        isLocked = true;
+    public void lock(){
+        this.isLocked = true;
     }
 
-    public void unlockDiary(String password) {
-           if(isValid(password))this.isLocked = false;
-          else{
-              throw new IncorrectPasswordException("oga your password is incorrect");
-          }
+    public void unlock(String password){
+        if(this.password.equals(password))this.isLocked = false;
     }
 
-    public boolean isValid(String password){
-        return password.equals(this.password);
+    public void addEntry(Entry entry){
+        entryList.add(entry);
     }
 
-
-    public void createEntry(String title, String body) {
-            Entry entry = new Entry(entryId,title,body);
-            entries.add(entry);
-            entryId++;
+    public Entry findEntry(Entry entry) throws EntryNotFoundException {
+        if(entryList.contains(entry))return entry;
+        throw new EntryNotFoundException("entry is not saved here");
     }
 
-    public int getNumberOfEntryInDiary(){
-        return entries.size();
+    public void deleteEntry(Entry entry) throws EntryNotFoundException {
+         var entryToBeDeleted = findEntry(entry);
+         entryList.remove(entryToBeDeleted);
     }
 
-    public Entry findEntryById(int entryId) {
-        for (var entry : entries) if(entry.getId() == entryId)return entries.get(entryId-1);
-        throw new EntryIdNotFoundException("these id wey u enter no dey here oh oga");
-    }
-
-    public void deleteEntry(int entryId) {
-       entries.remove(findEntryById(entryId));
-    }
-
-    public void updateEntry(int entryId,String newTitle,String newBody){
-         var entryToUpdate = findEntryById(entryId);
-           entryToUpdate.setBody(newBody);
-           entryToUpdate.setTitle(newTitle);
-    }
-    public String getUserName(){
-        return userName;
-    }
-
-
-    @Override
-    public String toString() {
-        return String.valueOf(entries);
-    }
-}
-class testDiary{
-
-    public static void main(String[] args) {
-        Diary di = new Diary("AYO","PASSWORD");
-        di.createEntry("title","body");
-        di.createEntry("title1","body1");
-        di.createEntry("title2","body2");
-        Diaries dee = new Diaries();
-        dee.addDiary(di);
-
-
-        System.out.println(dee);
+    public long getNumberOfEntry(){
+        return entryList.size();
     }
 
 }
