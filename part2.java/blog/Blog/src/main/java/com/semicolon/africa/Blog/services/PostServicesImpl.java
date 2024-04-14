@@ -6,6 +6,7 @@ import com.semicolon.africa.Blog.data.model.Post;
 import com.semicolon.africa.Blog.data.model.User;
 import com.semicolon.africa.Blog.dtos.PostRequest;
 import com.semicolon.africa.Blog.dtos.PostResponse;
+import com.semicolon.africa.Blog.dtos.UpdatePostRequest;
 import com.semicolon.africa.Blog.repository.Posts;
 import com.semicolon.africa.Blog.repository.Users;
 import lombok.var;
@@ -16,8 +17,9 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import static com.semicolon.africa.Blog.mappers.Mappers.mapPostToResponse;
-import static com.semicolon.africa.Blog.mappers.Mappers.mapRequestToPost;
+
+import static com.semicolon.africa.Blog.mappers.Mappers.*;
+
 @Service
 public class PostServicesImpl implements PostServices{
     @Autowired
@@ -63,5 +65,20 @@ public class PostServicesImpl implements PostServices{
          return mapPostToResponse(post);
     }
 
+    @Override
+    public PostResponse updatePost(UpdatePostRequest updatePostRequest) {
+                var post = posts.findPostById(updatePostRequest.getId());
+                if(post==null)throw new PostDoesNotExistException("these post was not created");
+                mapUpdateRequestToPost(updatePostRequest, post);
+                posts.save(post);
+                var user = users.findUserByUserName(updatePostRequest.getPosterUserName());
+                if(!user.isLoggedIn())throw new UserNotFoundException("you are logged out");
+                user.setPosts(posts.findPostByPosterUserName(updatePostRequest.getPosterUserName()));
+                return mapPostToResponse(post);
+    }
 
+    @Override
+    public List<Post> findAll() {
+        return posts.findAll();
+    }
 }

@@ -30,7 +30,6 @@ public class creditCard {
 
             System.out.printf("** Credit card Number: ");
             for (int check2 = CredLength - 1; check2 >= 0; check2--) {
-
                 System.out.printf("%d ", cardNo[check2]);
             }
             System.out.println();

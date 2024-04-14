@@ -1,9 +1,12 @@
 package com.semicolon.africa.Blog.mappers;
-
 import com.semicolon.africa.Blog.data.model.Comment;
 import com.semicolon.africa.Blog.data.model.Post;
 import com.semicolon.africa.Blog.data.model.User;
 import com.semicolon.africa.Blog.dtos.*;
+
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+
 public class Mappers {
 
 
@@ -64,5 +67,14 @@ public class Mappers {
            commentResponse.setCommenterUserName(commentRequest.getCommenterUserName());
            commentResponse.setPostContent(commentRequest.getPostContent());
            return commentResponse;
+    }
+
+    public static void mapUpdateRequestToPost(UpdatePostRequest updatePostRequest,Post post){
+        updatePostRequest.setTimeCreated(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES));
+        post.setCreatedTime(updatePostRequest.getTimeCreated());
+        post.setTitle(updatePostRequest.getTitle());
+        post.setContent(updatePostRequest.getContent());
+        post.setPosterUserName(updatePostRequest.getPosterUserName());
+        post.setCreatedTime(updatePostRequest.getTimeCreated());
     }
 }

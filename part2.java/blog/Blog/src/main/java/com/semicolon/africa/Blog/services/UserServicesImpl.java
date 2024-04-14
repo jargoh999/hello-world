@@ -39,6 +39,7 @@ public class UserServicesImpl implements UserServices {
     }
 
     private boolean isValid(User user) {
+
         return users.findUserByUserName(user.getUserName()) == null;
     }
 
