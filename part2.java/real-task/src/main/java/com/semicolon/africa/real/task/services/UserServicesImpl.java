@@ -8,8 +8,11 @@ import com.semicolon.africa.real.task.exception.UserAlreadyExistException;
 import com.semicolon.africa.real.task.exception.UserNotFoundException;
 import com.semicolon.africa.real.task.repositories.Users;
 import com.semicolon.africa.real.task.utils.Mappers;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -128,5 +131,57 @@ public class UserServicesImpl implements UserServices {
         return taskServices.findAllUserTasks(userName);
     }
 
+
+
+    @Override
+    public TaskResponse beginTask(TaskRequest taskRequest) {
+        var user =findUserByUserName(taskRequest.getTaskAuthor());
+        if (user == null) throw new UserNotFoundException("you are not a valid user");
+        if (!user.isActive()) throw new InactiveStateException("you are inactive");
+        return taskServices.beginTask(taskRequest);
+    }
+
+    @Override
+    public List<TodoTask> findAllUserTaskInProgress(TaskRequest taskRequest) {
+        var user =findUserByUserName(taskRequest.getTaskAuthor());
+        if (user == null) throw new UserNotFoundException("you are not a valid user");
+        if (!user.isActive()) throw new InactiveStateException("you are inactive");
+        return taskServices.findAllUserTaskInProgress(taskRequest);
+    }
+
+    @Override
+    public List<TodoTask> findAllUserHighPriorityTask(String userName) {
+        var user =findUserByUserName(userName);
+        if (user == null) throw new UserNotFoundException("you are not a valid user");
+        if (!user.isActive()) throw new InactiveStateException("you are inactive");
+        return taskServices.findAllUserHighPriorityTask(userName);
+    }
+
+    @Override
+    public List<TodoTask> findAllUserImportantTask(String userName) {
+        var user =findUserByUserName(userName);
+        if (user == null) throw new UserNotFoundException("you are not a valid user");
+        if (!user.isActive()) throw new InactiveStateException("you are inactive");
+        return taskServices.findAllUserImportantTask(userName);
+    }
+
+    @Override
+    public List<TodoTask> findAllUserLowPriorityTask(String userName) {
+        var user =findUserByUserName(userName);
+        if (user == null) throw new UserNotFoundException("you are not a valid user");
+        if (!user.isActive()) throw new InactiveStateException("you are inactive");
+        return taskServices.findAllUserLowPriorityTask(userName);
+    }
+
+    @Override
+    public int getTaskCompletionTime(LocalDateTime timeCreated, LocalDateTime timeCompleted) {
+        return taskServices.getTaskCompletionTime(timeCreated, timeCompleted);
+    }
+
+
+    @Override
+    public List<TodoTask> findAllTask() {
+        return taskServices.findAllTask();
+    }
 
 }
